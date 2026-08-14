@@ -47,3 +47,56 @@ The primary experience is a QR-code scan from a printed birthday card, so phone 
 - Prevent horizontal overflow at every breakpoint. Use overflow-safe German copy and balanced wrapping.
 - Keep above-the-fold loading fast on mobile data: preserve Next/Image sizing/optimization, avoid unnecessary asset duplication, reduce GPU-expensive grain/filter work on small/reduced-motion devices, and prevent layout shift.
 - Test the first QR entry, Skip, Replay, date toggling, group change, note entry, save/local fallback, and edit/reload flow on the mobile breakpoint before delivery.
+
+
+## Content, portrait and interaction revision (iteration 3)
+User feedback is explicit: the current portrait cutout looks bad (blocky grey artifacts and a bright halo), the intro is not cinematic enough, and the copy sounds forced. Rework these areas, preserving the strong mobile-first foundation from iteration 2.
+
+### People and voice
+- The gifters are Julius and Lena. Address/sign copy accordingly.
+- German voice should feel like close friends speaking: relaxed, warm, a little dry/funny, never like wine advertising or a tourism brochure.
+- Replace stiff lines such as “Ein guter Jahrgang verdient einen großen Abend” and generic “Deine Crew” language with personal copy. Direction: “Julian, wir haben da was vor.” / “Zum 33. wollten wir dir nicht noch irgendwas hinstellen. Also packen wir lieber Würzburg, Wein am Stein und uns drei zusammen.” / “Du suchst den Termin aus. Julius & Lena kümmern sich um den Rest.”
+- Group choices become natural and explicit: “Nur wir drei”, “Mit +1”, “Machen wir ’ne Runde draus”.
+- Keep sentences short enough for mobile and avoid forced wine puns in every paragraph.
+
+### Portrait quality
+- Delete/disable the current browser threshold/canvas cutout that creates block artifacts and a white halo.
+- Use the supplied exact portrait C:\Users\vonin-ju\Downloads\doctor-burg.webp.
+- First try a high-fidelity background replacement/extraction via the built-in imagegen edit workflow: preserve Julian’s exact face, hair, expression, body, purple shirt, pose and proportions; replace only the background with a perfectly uniform removable chroma key; remove key locally and validate.
+- Reject any generated result that changes his identity. If clean extraction cannot preserve identity, intentionally use the untouched original photo as a refined editorial full-frame/soft-mask composition with layered blur, vignette and light rather than a fake “cutout”. There must be no blocky matte, bright halo or visibly jagged edge.
+- Reposition/redesign the crown to sit naturally on the head and make it brushed antique gold, not a cartoon sticker.
+
+### Stronger cinematic intro
+- More than film grain and crossfades. Build an actual 5–6 beat mobile title sequence using deliberate scene changes and visual storytelling: cold-open title/age, vintage-1993 label or bottle macro, Julian spotlight/portrait, crown payoff, liquid/wine-color iris or light-leak transition, blue-hour Würzburg vineyard reveal, then personal gift card signed Julius & Lena.
+- Use mask/iris wipes, moving light, depth/parallax, animated line/map/label details, typography choreography and wine-liquid shapes. Grain is only a subtle texture.
+- Keep the full first-run experience around 15–18 seconds on mobile, always skippable, reduced-motion friendly, and readable on short phones.
+- No autoplay audio requirement; do not depend on sound for meaning.
+- Final reveal copy must feel personal: “Julian, wir fahren nach Würzburg.” / “Wein am Stein · 8.–25. Juli 2027” / “Julius & Lena”.
+
+### Flexible trip rhythm
+Replace the overly specific sightseeing “example weekend” with a deliberately flexible three-day rhythm that works around whichever festival date Julian picks:
+1. Day before: arrive in Würzburg, check in, first relaxed glass/food, no fixed attraction schedule.
+2. Festival day: slow morning, then WEIN AM STEIN in the evening.
+3. Day after: breakfast, optional short stroll, travel home.
+Present it as a loose plan, not a booking itinerary.
+
+### Mobile mini-game: Perfect Pour
+Add a lightweight, one-handed wine-themed mini-game after the gift/planner area.
+- “Der perfekte Schoppen”: press-and-hold (pointer and keyboard accessible) to fill a stylized wine glass; release as close as possible to a marked target line.
+- Show a score/accuracy and playful result copy (e.g. “Brückenschoppen-Profi”, “Das war eher ein Probiererle”, “Großzügig eingeschenkt”). Allow replay.
+- Use code-native SVG/CSS/canvas, no heavy game library. Do not hijack page scroll. Minimum 44px controls and mobile-first.
+- Best score may persist locally, but the game must not affect RSVP data.
+
+### Funny 1993 vintage profile
+Add an editorial “Jahrgang 1993” profile using researched, clearly attributed German-vintage facts:
+- Extremely warm late spring; flowering about three weeks early.
+- Rain in September/early October made harvest a nerve-racking selection challenge and encouraged botrytis.
+- Patient, selective growers still produced excellent Kabinett and some sensational Auslese; Decanter rates the German vintage 4/5.
+- Jancis Robinson characterizes it as nerve-racking but notes that some fine wines still show well.
+Sources: https://www.decanter.com/learn/vintage-guides/germany/1993-vintage-guide-for-germany-116182/ and https://www.jancisrobinson.com/learn/vintages/germany
+Pair facts with a humorous, clearly non-scientific Julian tasting note, e.g. “Früh Potenzial gezeigt. Hinten raus stark. 33 Jahre Flaschenreife – kein bisschen korkig.” Do not claim these Germany-wide facts specifically describe Franken.
+
+### Acceptance
+- Preserve official festival dates and optional persistence.
+- Keep current mobile-safe viewport/safe-area/touch rules.
+- Lint/type/build must pass and live Vercel root must return the real page, not 404.
