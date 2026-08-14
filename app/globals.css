@@ -1423,3 +1423,345 @@ footer a {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* QR-card mobile pass: phone portrait is the canonical first view. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.cinema {
+  width: 100%;
+  height: 100svh;
+  height: 100dvh;
+}
+
+.date-grid label:has(input:focus-visible),
+.flex-option:has(input:focus-visible) {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: -3px;
+}
+
+.size-control input[type="range"] {
+  min-height: 44px;
+}
+
+@media (hover: none) {
+  button,
+  a,
+  .date-grid label,
+  .flex-option {
+    touch-action: manipulation;
+  }
+
+  button:active,
+  a:active,
+  .date-grid label:active,
+  .flex-option:active {
+    filter: brightness(0.86);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    height: calc(70px + env(safe-area-inset-top));
+    column-gap: 12px;
+    padding: env(safe-area-inset-top) max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+  }
+
+  .site-header button {
+    min-height: 44px;
+    padding-inline: 4px;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .monogram {
+    width: 44px;
+    height: 44px;
+  }
+
+  .gift-hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: calc(88px + env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(30px, calc(18px + env(safe-area-inset-bottom))) max(18px, env(safe-area-inset-left));
+  }
+
+  .gift-hero-image {
+    object-position: 66% center;
+  }
+
+  .hero-copy {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-copy h1 {
+    max-width: 10ch;
+    font-size: clamp(2.95rem, 14vw, 4.35rem);
+    line-height: 0.89;
+  }
+
+  .hero-copy .eyebrow {
+    max-width: calc(100% - 88px);
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-rule {
+    width: 64%;
+    margin: 1.15rem 0;
+  }
+
+  .hero-lead {
+    max-width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .text-link {
+    width: 100%;
+    justify-content: space-between;
+    padding-inline: 4px;
+    border-bottom: 1px solid rgba(197, 161, 92, 0.5);
+  }
+
+  .hero-stamp {
+    top: calc(82px + env(safe-area-inset-top));
+    right: max(18px, env(safe-area-inset-right));
+    width: 76px;
+    height: 76px;
+  }
+
+  .hero-stamp span { font-size: 1.18rem; }
+  .hero-stamp strong { font-size: 0.76rem; letter-spacing: 0.24em; }
+  .hero-stamp small { font-size: 0.56rem; letter-spacing: 0.18em; }
+
+  .planner-section {
+    padding: 68px max(18px, env(safe-area-inset-right)) 72px max(18px, env(safe-area-inset-left));
+  }
+
+  .planner-form fieldset { padding-bottom: 2.65rem; }
+  .planner-form legend { font-size: clamp(1.65rem, 8vw, 2rem); line-height: 1.08; }
+  .field-hint { margin-bottom: 1.2rem; line-height: 1.5; }
+
+  .date-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .date-grid label {
+    display: flex;
+    min-width: 0;
+    min-height: 74px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 11px 9px;
+  }
+
+  .date-grid span { font-size: 0.7rem; }
+  .date-grid strong { margin-top: 0.35rem; font-size: 1.08rem; }
+  .flex-option { min-height: 68px; }
+
+  .group-options button {
+    width: 100%;
+    min-height: 80px;
+    padding: 16px 18px;
+  }
+
+  .size-control input[type="range"] { width: 100%; }
+
+  .note-field textarea,
+  input,
+  textarea {
+    font-size: 16px;
+  }
+
+  .note-field textarea { min-height: 144px; line-height: 1.5; }
+  .save-row { gap: 12px; }
+  .save-button { min-height: 56px; }
+
+  .final-actions { width: min(100%, 360px); }
+
+  .final-actions a,
+  .final-actions button {
+    display: flex;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border: 1px solid rgba(197, 161, 92, 0.72);
+  }
+
+  footer {
+    padding-right: max(22px, env(safe-area-inset-right));
+    padding-bottom: max(28px, calc(18px + env(safe-area-inset-bottom)));
+    padding-left: max(22px, env(safe-area-inset-left));
+  }
+
+  .film-grain {
+    inset: -20%;
+    opacity: 0.045;
+    background-size: 180px 180px;
+    animation: none;
+  }
+
+  .skip-button {
+    top: calc(6px + env(safe-area-inset-top));
+    right: max(12px, env(safe-area-inset-right));
+    min-width: 0;
+    padding-inline: 12px;
+  }
+
+  .invitation-scene,
+  .birthday-scene,
+  .gift-scene {
+    padding: calc(66px + env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(24px, calc(14px + env(safe-area-inset-bottom))) max(18px, env(safe-area-inset-left));
+  }
+
+  .birthday-scene h1 {
+    margin: 1rem 0;
+    font-size: clamp(3.35rem, 17vw, 5.2rem);
+    line-height: 0.86;
+  }
+
+  .age-mark { font-size: min(64vw, 16rem); }
+
+  .portrait-stage {
+    inset: clamp(78px, 13dvh, 110px) auto calc(64px + env(safe-area-inset-bottom));
+    width: min(420px, 104vw);
+  }
+
+  .crown {
+    top: 0;
+    width: clamp(92px, 29vw, 118px);
+  }
+
+  .portrait-caption {
+    max-width: calc(100vw - 20px - env(safe-area-inset-left) - env(safe-area-inset-right));
+    gap: 6px;
+    margin-bottom: max(12px, calc(10px + env(safe-area-inset-bottom)));
+    padding: 12px 10px;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .vineyard-scene {
+    padding: calc(68px + env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(30px, calc(20px + env(safe-area-inset-bottom))) max(20px, env(safe-area-inset-left));
+  }
+
+  .vineyard-scene h2 {
+    font-size: clamp(3.1rem, 15vw, 5rem);
+    line-height: 0.88;
+  }
+
+  .gift-scene h2 {
+    margin: 0.9rem 0;
+    font-size: clamp(4rem, 20vw, 6.5rem);
+    line-height: 0.76;
+  }
+
+  .gift-date {
+    margin: 0.8rem 0 1rem;
+    font-size: clamp(1rem, 5vw, 1.3rem);
+    letter-spacing: 0.12em;
+  }
+
+  .gift-scene > p:last-child { max-width: 28ch; line-height: 1.4; }
+}
+
+@media (max-width: 350px) {
+  .site-header button { font-size: 0.58rem; letter-spacing: 0.09em; }
+  .hero-copy h1 { font-size: clamp(2.72rem, 13.8vw, 3.05rem); }
+  .hero-stamp { width: 70px; height: 70px; }
+  .portrait-stage { width: min(370px, 108vw); }
+  .portrait-caption { gap: 4px; padding-inline: 8px; font-size: 0.54rem; letter-spacing: 0.09em; }
+  .gift-scene h2 { font-size: 3.65rem; }
+}
+
+@media (max-height: 740px) and (orientation: portrait) {
+  .gift-hero { padding-bottom: max(22px, calc(12px + env(safe-area-inset-bottom))); }
+  .hero-copy h1 { font-size: clamp(2.62rem, 13vw, 3.5rem); }
+  .hero-copy .eyebrow { margin-bottom: 0.55rem; }
+  .hero-rule { margin: 0.8rem 0; }
+  .hero-lead { margin-bottom: 0.65rem; font-size: 0.88rem; line-height: 1.42; }
+  .hero-stamp { top: calc(78px + env(safe-area-inset-top)); width: 68px; height: 68px; }
+  .gold-line { height: 54px; margin: 1.3rem 0; }
+
+  .portrait-stage {
+    inset: 70px auto calc(58px + env(safe-area-inset-bottom));
+    width: min(390px, 96vw);
+  }
+
+  .crown { width: 96px; }
+  .portrait-caption { margin-bottom: max(8px, calc(6px + env(safe-area-inset-bottom))); }
+  .vineyard-scene h2 { font-size: clamp(2.9rem, 14vw, 4.2rem); }
+  .gift-scene h2 { margin: 0.7rem 0; font-size: clamp(3.7rem, 18vw, 5.5rem); }
+  .gift-date { margin: 0.65rem 0 0.8rem; }
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .skip-button { top: calc(4px + env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); }
+
+  .invitation-scene,
+  .birthday-scene,
+  .gift-scene {
+    padding: calc(48px + env(safe-area-inset-top)) max(22px, env(safe-area-inset-right)) max(14px, calc(8px + env(safe-area-inset-bottom))) max(22px, env(safe-area-inset-left));
+  }
+
+  .gold-line { height: 38px; margin: 0.75rem 0; }
+  .birthday-scene h1 { margin: 0.5rem 0; font-size: clamp(2.7rem, 12vh, 4rem); }
+  .age-mark { font-size: min(38vh, 12rem); }
+  .portrait-scene { justify-content: flex-end; }
+
+  .portrait-stage {
+    inset: 48px max(18px, 8vw) 0 auto;
+    width: min(250px, 36vw);
+  }
+
+  .crown { width: 72px; }
+
+  .portrait-caption {
+    position: absolute;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: max(18px, env(safe-area-inset-left));
+    max-width: 48vw;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
+    white-space: normal;
+  }
+
+  .vineyard-scene {
+    padding: calc(48px + env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(18px, calc(10px + env(safe-area-inset-bottom))) max(24px, env(safe-area-inset-left));
+  }
+
+  .vineyard-scene h2 { max-width: 72vw; margin-top: 0.5rem; font-size: clamp(2.6rem, 11vh, 4rem); }
+  .gift-scene h2 { margin: 0.45rem 0; font-size: clamp(3rem, 16vh, 4.5rem); }
+  .gift-date { margin: 0.45rem 0 0.55rem; font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain { display: none; }
+
+  .cinema-backdrop,
+  .gift-hero-image {
+    animation: none;
+    transform: none;
+  }
+}
