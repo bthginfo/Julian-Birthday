@@ -61,21 +61,19 @@ function validate(value: unknown): Rsvp | null {
   };
 }
 
-async function ensureTable(sql: ReturnType<typeof neon>) {
-  await sql`
-    CREATE TABLE IF NOT EXISTS julian_birthday_rsvp (
-      id text PRIMARY KEY,
-      payload jsonb NOT NULL,
-      updated_at timestamptz NOT NULL
-    )
-  `;
-}
+const tableStatement = `
+  CREATE TABLE IF NOT EXISTS julian_birthday_rsvp (
+    id text PRIMARY KEY,
+    payload jsonb NOT NULL,
+    updated_at timestamptz NOT NULL
+  )
+`;
 
 export async function GET() {
   if (!process.env.DATABASE_URL) return unavailable();
   try {
     const sql = neon(process.env.DATABASE_URL);
-    await ensureTable(sql);
+    await sql.query(tableStatement);
     const rows = (await sql`
       SELECT payload, updated_at
       FROM julian_birthday_rsvp
@@ -114,7 +112,7 @@ export async function PUT(request: Request) {
   }
   try {
     const sql = neon(process.env.DATABASE_URL);
-    await ensureTable(sql);
+    await sql.query(tableStatement);
     await sql`
       INSERT INTO julian_birthday_rsvp (id, payload, updated_at)
       VALUES ('julian', ${JSON.stringify(rsvp)}::jsonb, ${rsvp.updatedAt})
