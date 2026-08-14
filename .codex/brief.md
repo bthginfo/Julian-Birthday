@@ -34,3 +34,16 @@ Delivery:
 - Work directly on https://github.com/bthginfo/Julian-Birthday branch main because local workspace is read-only.
 - Read token only from C:\Users\vonin-ju\Downloads\pat.env into a process-local variable; never print or persist it.
 - Do not deploy manually; Vercel is connected.
+
+
+## Mobile-first QR-card acceptance (iteration 2)
+The primary experience is a QR-code scan from a printed birthday card, so phone portrait is the canonical layout. Desktop is secondary.
+- Explicitly optimize and reason through 320, 360, 375, 390, and 430 px widths plus short 667–740 px heights.
+- The cinematic intro must use dynamic/small viewport units, stay fully framed without scroll, keep Skip clear of notches/status bars, and keep portrait, crown, caption, gift date, and reveal legible on short phones. Add landscape/short-height fallbacks.
+- Main hero should be a powerful first mobile viewport, not an 860px fixed-height desktop crop. Use 100svh/100dvh with sensible minimums and safe-area padding.
+- Header and all bottom actions must honor safe-area insets. Avoid header/stamp/title overlap.
+- Every interactive surface must provide at least a 44×44 CSS-pixel target; form controls use >=16px text to prevent iOS focus zoom. Add clear focus-visible and touch feedback.
+- Date selection should remain fast and scannable one-handed; avoid tiny labels. Group choices and save CTA become full-width where useful.
+- Prevent horizontal overflow at every breakpoint. Use overflow-safe German copy and balanced wrapping.
+- Keep above-the-fold loading fast on mobile data: preserve Next/Image sizing/optimization, avoid unnecessary asset duplication, reduce GPU-expensive grain/filter work on small/reduced-motion devices, and prevent layout shift.
+- Test the first QR entry, Skip, Replay, date toggling, group change, note entry, save/local fallback, and edit/reload flow on the mobile breakpoint before delivery.
