@@ -4,6 +4,8 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const databaseUrl = process.env.DATABASE_URL ?? process.env.STORAGE_URL;
+
 type GroupChoice = "with-us" | "plus-one" | "larger";
 
 type Rsvp = {
@@ -70,9 +72,9 @@ const tableStatement = `
 `;
 
 export async function GET() {
-  if (!process.env.DATABASE_URL) return unavailable();
+  if (!databaseUrl) return unavailable();
   try {
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = neon(databaseUrl);
     await sql.query(tableStatement);
     const rows = (await sql`
       SELECT payload, updated_at
@@ -99,7 +101,7 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
-  if (!process.env.DATABASE_URL) return unavailable();
+  if (!databaseUrl) return unavailable();
   let body: unknown;
   try {
     body = await request.json();
@@ -111,7 +113,7 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Bitte prüfe deine Auswahl." }, { status: 400 });
   }
   try {
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = neon(databaseUrl);
     await sql.query(tableStatement);
     await sql`
       INSERT INTO julian_birthday_rsvp (id, payload, updated_at)
